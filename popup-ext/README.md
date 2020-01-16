@@ -9,11 +9,13 @@ babelify brfs
 @babel/core
 react-devtools
 
+
 ## dependencies
 
 yarn add browserify-derequire
 
 browserify-derequire
+pify end-of-stream
 
 ## chrome://extensions/?errors
 
@@ -50,10 +52,20 @@ ui 無法使用 import
 import log from 'loglevel'
 ```
 
-ParseError: 'import' and 'export' may appear only with 'sourceType: module'
+> ParseError: 'import' and 'export' may appear only with 'sourceType: module'
 
 缺 babel.config.js
 
-yarn add @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread -D
+`yarn add @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread -D`
 
-yarn add @babel/runtime
+`yarn add @babel/runtime`
+
+`yarn add extensionizer`
+
+> Failed to load resource: net::ERR_FILE_NOT_FOUND
+
+index.css @import url("./fonts/Font_Awesome/font-awesome.min.css");
+
+chrome-extension://jiekmineafnpenagghplmkdepommklhg/fonts/Font_Awesome/font-awesome.min.css
+
+缺 FONT

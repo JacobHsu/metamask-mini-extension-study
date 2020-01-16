@@ -33,6 +33,9 @@
   "dependencies": {
     "@babel/runtime": "^7.8.3",
     "browserify-derequire": "^1.0.1",
-    "loglevel": "^1.6.6"
+    "end-of-stream": "^1.4.4",
+    "extensionizer": "^1.0.1",
+    "loglevel": "^1.6.6",
+    "pify": "^4.0.1"
   }
 }

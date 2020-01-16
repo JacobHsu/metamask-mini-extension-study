@@ -10,6 +10,8 @@ const assign = require('lodash.assign')
 const livereload = require('gulp-livereload')
 const gutil = require('gulp-util')
 const watch = require('gulp-watch')
+const pify = require('pify')
+const endOfStream = pify(require('end-of-stream'))
 
 
 const browserPlatforms = [
@@ -42,6 +44,11 @@ createCopyTasks('locales', {
 createCopyTasks('images', {
     source: './app/images/',
     destinations: commonPlatforms.map(platform => `./dist/${platform}/images`),
+})
+
+createCopyTasks('fonts', {
+  source: './app/fonts/',
+  destinations: commonPlatforms.map(platform => `./dist/${platform}/fonts`),
 })
 
 createCopyTasks('css', {
