@@ -7,6 +7,7 @@ const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 const del = require('del')
 const assign = require('lodash.assign')
+const livereload = require('gulp-livereload')
 const gutil = require('gulp-util')
 const watch = require('gulp-watch')
 
@@ -19,6 +20,14 @@ const commonPlatforms = [
     // browser extensions
     ...browserPlatforms,
 ]
+
+// browser reload
+
+gulp.task('dev:reload', function () {
+  livereload.listen({
+    port: 35729,
+  })
+})
 
 // copy universal
 
@@ -172,11 +181,11 @@ function generateBundler (opts, performBundle) {
   
     if (!opts.buildLib) {
        
-    //   if (opts.devMode && opts.filename === 'ui.js') {
-    //     browserifyOpts['entries'] = ['./development/require-react-devtools.js', opts.filepath]
-    //   } else {
-    //     browserifyOpts['entries'] = [opts.filepath]
-    //   }
+      // if (opts.devMode && opts.filename === 'ui.js') {
+      //   browserifyOpts['entries'] = ['./development/require-react-devtools.js', opts.filepath]
+      // } else {
+      //   browserifyOpts['entries'] = [opts.filepath]
+      // }
       browserifyOpts['entries'] = [opts.filepath] 
     }
   
@@ -326,7 +335,7 @@ gulp.task('dev:extension',
         //'build:extension:js:deps:ui',  // build ui-libs.js
         'dev:extension:js',
         'dev:copy',
-        //'dev:reload'
+        'dev:reload'
     )
     )
 )

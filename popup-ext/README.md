@@ -2,7 +2,7 @@
 
 ## devDependencies
 
-yarn add gulp gulp-util gulp-watch -D
+yarn add gulp gulp-util gulp-watch gulp-livereload -D
 del lodash.assign watchify browserify envify 
 vinyl-source-stream vinyl-buffer
 babelify brfs
@@ -34,3 +34,26 @@ function generateBundler
       browserifyOpts['entries'] = [opts.filepath] 
     }
 ````
+
+## ui.js
+
+### dependencies
+
+yarn add loglevel
+
+
+### debug
+
+ui 無法使用 import
+
+```js
+import log from 'loglevel'
+```
+
+ParseError: 'import' and 'export' may appear only with 'sourceType: module'
+
+缺 babel.config.js
+
+yarn add @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread -D
+
+yarn add @babel/runtime
