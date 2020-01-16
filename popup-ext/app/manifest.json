@@ -1,0 +1,20 @@
+{
+  "name": "metamask_browser_action",
+  "short_name": "__MSG_appName__",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "author": "Jacob Hsu",
+  "description": "metamask_browser_action popup.html",
+  "icons": {
+    "48": "images/icon-32.png"
+  },
+  "default_locale": "en",
+  "browser_action": {
+    "default_icon": {
+      "32": "images/icon-32.png"
+    },
+    "default_title": "MetaMaskExt",
+    "default_popup": "popup.html"
+  },
+  "minimum_chrome_version": "58"
+}
