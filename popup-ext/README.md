@@ -42,6 +42,7 @@ function generateBundler
 ### dependencies
 
 yarn add loglevel
+extension-port-stream
 
 
 ### debug
