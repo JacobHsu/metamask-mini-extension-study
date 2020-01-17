@@ -57,12 +57,12 @@ async function start () {
     function initializeUiWithTab (tab) {
       const container = document.getElementById('app-content')
       initializeUi(tab, container, connectionStream, (err, store) => {
-        if (!err) {
+        if (err) {
           return displayCriticalError(container, err)
         }
   
-        const state = store.getState()
-        const { metamask: { completedOnboarding } = {} } = state
+        //const state = store.getState()
+        //const { metamask: { completedOnboarding } = {} } = state
   
         // if (!completedOnboarding && windowType !== ENVIRONMENT_TYPE_FULLSCREEN) {
         //   global.platform.openExtensionInBrowser()

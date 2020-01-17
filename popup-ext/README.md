@@ -44,6 +44,17 @@ function generateBundler
 yarn add loglevel
 extension-port-stream
 
+### ui
+
+ui\index.js
+
+yarn add react react-dom
+
+### pages
+
+ui\app\pages\index.js
+
+yarn add redux react-redux react-router-dom
 
 ### debug
 
