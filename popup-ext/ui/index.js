@@ -2,8 +2,10 @@ import React from 'react'
 
 import log from 'loglevel'
 
-import ReactDOM from 'react-dom';
-import Home from './Home'
+//import ReactDOM from 'react-dom';
+import { render } from 'react-dom'
+import Root from './app/pages'
+//import Home from './Home'
 
 export default launchMetamaskUi
 
@@ -14,7 +16,9 @@ function launchMetamaskUi (opts, cb) {
     console.log('launchMetamaskUi',opts)
       
 
-    ReactDOM.render(<Home />, document.getElementById('app-content'));
+    // ReactDOM.render(<Home />, document.getElementById('app-content'));
+    // ReactDOM.render(<Home />, opts.container);
+    render(<Root />, opts.container);
 
     cb(null)
   }

@@ -106,8 +106,8 @@ function initializeUi (activeTab, container, connectionStream, cb) {
   // })
 
   launchMetaMaskUi({
-    // activeTab,
-    // container,
+    activeTab,
+    container,
     // backgroundConnection,
   }, cb)
 }

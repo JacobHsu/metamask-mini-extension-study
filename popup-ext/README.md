@@ -56,6 +56,12 @@ ui\app\pages\index.js
 
 yarn add redux react-redux react-router-dom
 
+### store
+
+ui\app\store\store.js
+
+yarn add redux-thunk remote-redux-devtools 
+
 ### debug
 
 ui 無法使用 import
