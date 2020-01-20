@@ -97,4 +97,6 @@ router output 應包裹在 return
 ## React Docs
 
 [Function Component 與 Class Component](https://zh-hant.reactjs.org/docs/components-and-props.html)
+
+在適當的時機下，透過 `PureComponent` 可以提升效能，這是由於繼承 React.PureComponent 在shouldComponentUpdate預設實作 shadow compare 新的 props & state 與舊的 props & state，如果兩者相同就會回傳 false，不 re-render component。
   
