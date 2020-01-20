@@ -1,5 +1,5 @@
 import React from 'react'
 const Main = () => {
-    return <div>ui pagess main index </div>
+    return <div>ui pagess router main index </div>
 }
 export default Main

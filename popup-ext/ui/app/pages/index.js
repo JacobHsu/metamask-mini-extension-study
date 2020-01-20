@@ -1,14 +1,12 @@
 import React from 'react'
 import { HashRouter, Route } from 'react-router-dom'
-
-import Main from './Main'
+import Routes from './routes'
 
 const Index = () => {
 
-    // return <div>ui pages index </div>
     return (
         <HashRouter hashType="noslash">
-            <Route path="/" component={Main} />
+            <Routes/>
         </HashRouter>
     );
 } 
