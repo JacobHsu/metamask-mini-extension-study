@@ -33,6 +33,9 @@ async function startApp (opts) {
   const store = configureStore({
     activeTab: opts.activeTab,
 
+    // metamaskState represents the cross-tab state
+    metamask: 'metamaskState',
+
     // appState represents the current tab's popup state
     appState: {},
 

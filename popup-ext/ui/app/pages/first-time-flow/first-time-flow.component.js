@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import FirstTimeFlowSwitch from './first-time-flow-switch'
 import Welcome from './welcome'
+import SelectAction from './select-action'
 
 import {
   DEFAULT_ROUTE,
@@ -23,6 +24,10 @@ export default class FirstTimeFlow extends PureComponent {
     return (
       <div className="first-time-flow">
         <Switch>
+         <Route
+            path={INITIALIZE_SELECT_ACTION_ROUTE}
+            component={SelectAction}
+          />
           <Route
               exact
               path={INITIALIZE_WELCOME_ROUTE}
