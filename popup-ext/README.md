@@ -3,12 +3,11 @@
 ## devDependencies
 
 yarn add gulp gulp-util gulp-watch gulp-livereload -D
-del lodash.assign watchify browserify envify 
+del lodash.assign watchify browserify envify  
 vinyl-source-stream vinyl-buffer
 babelify brfs
 @babel/core
 react-devtools
-
 
 ## dependencies
 
@@ -16,6 +15,11 @@ yarn add browserify-derequire
 
 browserify-derequire
 pify end-of-stream
+
+[store] redux-thunk remote-redux-devtools
+[pages] recompose prop-types
+
+yarn add @sentry/browser
 
 ## chrome://extensions/?errors
 

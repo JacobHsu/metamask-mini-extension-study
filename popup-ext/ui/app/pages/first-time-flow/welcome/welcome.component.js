@@ -1,5 +1,6 @@
 
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 
 export default class Welcome extends PureComponent {
@@ -9,8 +10,12 @@ export default class Welcome extends PureComponent {
   //   welcomeScreenSeen: PropTypes.bool,
   // }
 
-  // static contextTypes = {
-  //   t: PropTypes.func,
+  static contextTypes = {
+    t: PropTypes.func,
+  }
+
+  // constructor (props) {
+  //   super(props)
   // }
 
   // componentDidMount () {
@@ -33,7 +38,10 @@ export default class Welcome extends PureComponent {
     return (
       <div className="welcome-page__wrapper">
         <div className="welcome-page">
-          Mascot welcome
+          Mascot welcome UI
+          <div className="welcome-page__header">
+            { t('welcome') }
+          </div>
           {/* <Mascot
             animationEventEmitter={this.animationEventEmitter}
             width="125"
