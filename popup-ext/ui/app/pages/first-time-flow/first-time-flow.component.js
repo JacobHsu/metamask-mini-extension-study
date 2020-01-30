@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import FirstTimeFlowSwitch from './first-time-flow-switch'
 import Welcome from './welcome'
 import SelectAction from './select-action'
+import MetaMetricsOptInScreen from './metametrics-opt-in'
 
 import {
   DEFAULT_ROUTE,
@@ -32,7 +33,12 @@ export default class FirstTimeFlow extends PureComponent {
               exact
               path={INITIALIZE_WELCOME_ROUTE}
               component={Welcome}
-            />
+          />
+          <Route
+            exact
+            path={INITIALIZE_METAMETRICS_OPT_IN_ROUTE}
+            component={MetaMetricsOptInScreen}
+          />
           <Route
             exact
             path="*"

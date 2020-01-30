@@ -23,6 +23,10 @@ yarn add @sentry/browser
 
 [ui/app/components] classnames
 
+## router
+
+first-time-flow.component.js 控制初始設定的 router
+
 
 ## chrome://extensions/?errors
 

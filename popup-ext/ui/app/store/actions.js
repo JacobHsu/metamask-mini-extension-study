@@ -140,11 +140,13 @@ let background = null
 export function setFirstTimeFlowType (type) {
     return (dispatch) => {
       log.debug(`background.setFirstTimeFlowType`)
-      background.setFirstTimeFlowType(type, (err) => {
-        if (err) {
-          return dispatch(displayWarning(err.message))
-        }
-      })
+    
+    // todo- background.js
+    //   background.setFirstTimeFlowType(type, (err) => {
+    //     if (err) {
+    //       return dispatch(displayWarning(err.message))
+    //     }
+    //   })
       dispatch({
         type: actionConstants.SET_FIRST_TIME_FLOW_TYPE,
         value: type,
