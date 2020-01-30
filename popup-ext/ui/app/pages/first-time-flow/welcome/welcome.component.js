@@ -1,6 +1,8 @@
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import Button from '../../../components/ui/button'
+import { INITIALIZE_CREATE_PASSWORD_ROUTE, INITIALIZE_SELECT_ACTION_ROUTE } from '../../../helpers/constants/routes'
 
 
 export default class Welcome extends PureComponent {
@@ -14,9 +16,9 @@ export default class Welcome extends PureComponent {
     t: PropTypes.func,
   }
 
-  // constructor (props) {
-  //   super(props)
-  // }
+  constructor (props) {
+    super(props)
+  }
 
   // componentDidMount () {
   //   const { history, participateInMetaMetrics, welcomeScreenSeen } = this.props
@@ -28,9 +30,9 @@ export default class Welcome extends PureComponent {
   //   }
   // }
 
-  // handleContinue = () => {
-  //   this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE)
-  // }
+  handleContinue = () => {
+    this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE)
+  }
 
   render () {
     const { t } = this.context
@@ -39,18 +41,15 @@ export default class Welcome extends PureComponent {
       <div className="welcome-page__wrapper">
         <div className="welcome-page">
           Mascot welcome UI
-          <div className="welcome-page__header">
-            { t('welcome') }
-          </div>
           {/* <Mascot
             animationEventEmitter={this.animationEventEmitter}
             width="125"
             height="125"
           /> */}
-          {/* <div className="welcome-page__header">
+          <div className="welcome-page__header">
             { t('welcome') }
-          </div> */}
-          {/* <div className="welcome-page__description">
+          </div>
+          <div className="welcome-page__description">
             <div>{ t('metamaskDescription') }</div>
             <div>{ t('happyToSeeYou') }</div>
           </div>
@@ -60,7 +59,7 @@ export default class Welcome extends PureComponent {
             onClick={this.handleContinue}
           >
             { t('getStarted') }
-          </Button> */}
+          </Button>
         </div>
       </div>
     )

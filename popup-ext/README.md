@@ -21,6 +21,9 @@ pify end-of-stream
 
 yarn add @sentry/browser
 
+[ui/app/components] classnames
+
+
 ## chrome://extensions/?errors
 
 > WebSocket connection to 'ws://localhost:8097/' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED
