@@ -22,11 +22,23 @@ pify end-of-stream
 yarn add @sentry/browser
 
 [ui/app/components] classnames
+[ui.js] obj-multiplex pump
+[background.js] extensionizer extension-port-stream pify clone
+
+## manifest.json
+
+background.js  
+app\scripts\lib\local-store.js  
+
+```js
+  "permissions": [
+    "storage"
+  ],
+```
 
 ## router
 
 first-time-flow.component.js 控制初始設定的 router
-
 
 ## chrome://extensions/?errors
 

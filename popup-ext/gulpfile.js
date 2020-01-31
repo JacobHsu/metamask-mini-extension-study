@@ -115,6 +115,7 @@ function copyTask (taskName, opts) {
 // build js
 
 const buildJsFiles = [
+    'background',
     'ui',
 ]
 

@@ -12,7 +12,9 @@ import extension from 'extensionizer'
 import ExtensionPlatform from './platforms/extension'
 import NotificationManager from './lib/notification-manager'
 const notificationManager = new NotificationManager()
+import urlUtil from 'url'
 import launchMetaMaskUi from '../../ui'
+import { setupMultiplex } from './lib/stream-utils.js'
 import log from 'loglevel'
 
 start().catch(log.error)
@@ -37,9 +39,10 @@ async function start () {
           notificationManager.closePopup()
         }
     }
-
+console.log('[ui.js] windowType', windowType)
     // setup stream to background
-    //const extensionPort = extension.runtime.connect({ name: windowType })
+    const extensionPort = extension.runtime.connect({ name: windowType })
+    console.log('[ui.js] extensionPort', extensionPort)
     //const connectionStream = new PortStream(extensionPort)
     const connectionStream = {}
 
@@ -110,5 +113,17 @@ function initializeUi (activeTab, container, connectionStream, cb) {
     container,
     // backgroundConnection,
   }, cb)
+}
+
+/**
+ * Establishes a connection to the background and a Web3 provider
+ *
+ * @param {PortDuplexStream} connectionStream - PortStream instance establishing a background connection
+ * @param {Function} cb - Called when controller connection is established
+ */
+function connectToAccountManager (connectionStream, cb) {
+  const mx = setupMultiplex(connectionStream)
+  setupControllerConnection(mx.createStream('controller'), cb)
+  setupWeb3Connection(mx.createStream('provider'))
 }
 

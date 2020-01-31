@@ -4,6 +4,7 @@ import log from 'loglevel'
 
 import { render } from 'react-dom'
 import Root from './app/pages'
+import * as actions from './app/store/actions'
 import configureStore from './app/store/store'
 import { fetchLocale } from './app/helpers/utils/i18n-helper'
 
@@ -14,6 +15,7 @@ log.setLevel(global.METAMASK_DEBUG ? 'debug' : 'warn')
 
 function launchMetamaskUi (opts, cb) {
     const { backgroundConnection } = opts
+    actions._setBackgroundConnection(backgroundConnection)
     console.log('launchMetamaskUi',opts)
     
     // ReactDOM.render(<Home />, document.getElementById('app-content'));

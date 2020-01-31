@@ -169,5 +169,5 @@ export {
   //BnMultiplyByFraction,
   //getRandomArrayItem,
   //mapObjectValues,
-  //checkForError,
+  checkForError,
 }

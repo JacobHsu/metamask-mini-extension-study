@@ -132,6 +132,9 @@ export const actionConstants = {
 }
   
 let background = null
+export function _setBackgroundConnection (backgroundConnection) {
+  background = backgroundConnection
+}
 
 /**
  * Clears all permissions for all domains.

@@ -9,6 +9,12 @@
     "48": "images/icon-32.png"
   },
   "default_locale": "en",
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
   "browser_action": {
     "default_icon": {
       "32": "images/icon-32.png"
@@ -17,6 +23,10 @@
     "default_popup": "popup.html"
   },
   "minimum_chrome_version": "58",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
   "web_accessible_resources": [
     "inpage.js"
   ]
