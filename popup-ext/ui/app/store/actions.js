@@ -156,3 +156,46 @@ export function setFirstTimeFlowType (type) {
       })
     }
 }
+
+export function setParticipateInMetaMetrics (val) {
+  return (dispatch) => {
+    log.debug(`background.setParticipateInMetaMetrics`)
+    return new Promise((resolve, reject) => {
+      background.setParticipateInMetaMetrics(val, (err, metaMetricsId) => {
+        log.debug(err)
+        if (err) {
+          dispatch(displayWarning(err.message))
+          return reject(err)
+        }
+
+        dispatch({
+          type: actionConstants.SET_PARTICIPATE_IN_METAMETRICS,
+          value: val,
+        })
+
+        resolve([val, metaMetricsId])
+      })
+    })
+  }
+}
+
+export function setMetaMetricsSendCount (val) {
+  return (dispatch) => {
+    log.debug(`background.setMetaMetricsSendCount`)
+    return new Promise((resolve, reject) => {
+      background.setMetaMetricsSendCount(val, (err) => {
+        if (err) {
+          dispatch(displayWarning(err.message))
+          return reject(err)
+        }
+
+        dispatch({
+          type: actionConstants.SET_METAMETRICS_SEND_COUNT,
+          value: val,
+        })
+
+        resolve(val)
+      })
+    })
+  }
+}

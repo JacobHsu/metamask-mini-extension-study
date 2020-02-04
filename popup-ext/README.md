@@ -24,6 +24,12 @@ yarn add @sentry/browser
 [ui/app/components] classnames
 [ui.js] obj-multiplex pump
 [background.js] extensionizer extension-port-stream pify clone
+[app\scripts\ui.js] dnode web3-stream-provider eth-query
+[inpage.js] metamask-inpage-provider post-message-stream web3
+[metamask-controller.js]
+- preferences.js  obs-store eth-sig-util ethereumjs-util
+
+
 
 ## manifest.json
 

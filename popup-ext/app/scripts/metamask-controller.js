@@ -32,4 +32,18 @@ export default class MetamaskController extends EventEmitter {
     //this.setupProviderConnection(mux.createStream('provider'), sender, true)
   }
 
+    /**
+   * Sets whether or not the user will have usage data tracked with MetaMetrics
+   * @param {boolean} bool - True for users that wish to opt-in, false for users that wish to remain out.
+   * @param {Function} cb - A callback function called when complete.
+   */
+    setParticipateInMetaMetrics (bool, cb) {
+      try {
+        const metaMetricsId = this.preferencesController.setParticipateInMetaMetrics(bool)
+        cb(null, metaMetricsId)
+      } catch (err) {
+        cb(err)
+      }
+    }
+
 }

@@ -36,12 +36,19 @@
     "browserify-derequire": "^1.0.1",
     "classnames": "^2.2.6",
     "clone": "^2.1.2",
+    "dnode": "^1.2.2",
     "end-of-stream": "^1.4.4",
+    "eth-query": "^2.1.2",
+    "eth-sig-util": "^2.5.2",
+    "ethereumjs-util": "^6.2.0",
     "extension-port-stream": "^1.0.0",
     "extensionizer": "^1.0.1",
     "loglevel": "^1.6.6",
+    "metamask-inpage-provider": "^4.0.3",
     "obj-multiplex": "^1.0.0",
+    "obs-store": "^4.0.3",
     "pify": "^4.0.1",
+    "post-message-stream": "^3.0.0",
     "prop-types": "^15.7.2",
     "pump": "^3.0.0",
     "react": "^16.12.0",
@@ -51,6 +58,8 @@
     "recompose": "^0.30.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "remote-redux-devtools": "^0.5.16"
+    "remote-redux-devtools": "^0.5.16",
+    "web3": "^1.2.6",
+    "web3-stream-provider": "^4.0.0"
   }
 }

@@ -24,10 +24,10 @@ const commonPlatforms = [
 ]
 
 // browser reload
-
+// port: 35729
 gulp.task('dev:reload', function () {
   livereload.listen({
-    port: 35729,
+    port: 35730,
   })
 })
 

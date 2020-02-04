@@ -19,3 +19,10 @@ export {
 }
 
 ```
+
+> Uncaught (in promise) TypeError: Cannot read property 'setParticipateInMetaMetrics' of undefined
+
+app\scripts\controllers\preferences.js
+ Setter for the `participateInMetaMetrics` property
+
+> ObjectMultiplex - orphaned data for stream "controller"

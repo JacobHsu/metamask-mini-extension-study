@@ -12,8 +12,12 @@ import extension from 'extensionizer'
 import ExtensionPlatform from './platforms/extension'
 import NotificationManager from './lib/notification-manager'
 const notificationManager = new NotificationManager()
+import EthQuery from 'eth-query'
+import { EventEmitter } from 'events'
+import Dnode from 'dnode'
 import urlUtil from 'url'
 import launchMetaMaskUi from '../../ui'
+import StreamProvider from 'web3-stream-provider'
 import { setupMultiplex } from './lib/stream-utils.js'
 import log from 'loglevel'
 
@@ -43,8 +47,8 @@ console.log('[ui.js] windowType', windowType)
     // setup stream to background
     const extensionPort = extension.runtime.connect({ name: windowType })
     console.log('[ui.js] extensionPort', extensionPort)
-    //const connectionStream = new PortStream(extensionPort)
-    const connectionStream = {}
+    const connectionStream = new PortStream(extensionPort)
+    //const connectionStream = {}
 
     const activeTab = await queryCurrentActiveTab(windowType)
     console.log('activeTab', activeTab)
@@ -96,23 +100,22 @@ async function queryCurrentActiveTab (windowType) {
 }
 
 function initializeUi (activeTab, container, connectionStream, cb) {
-  // connectToAccountManager(connectionStream, (err, backgroundConnection) => {
-  //   if (err) {
-  //     return cb(err)
-  //   }
+  connectToAccountManager(connectionStream, (err, backgroundConnection) => {
+    if (err) {
+      return cb(err)
+    }
 
-  //   launchMetaMaskUi({
-  //     activeTab,
-  //     container,
-  //     backgroundConnection,
-  //   }, cb)
-  // })
+    launchMetaMaskUi({
+      activeTab,
+      container,
+      backgroundConnection,
+    }, cb)
+  })
 
-  launchMetaMaskUi({
-    activeTab,
-    container,
-    // backgroundConnection,
-  }, cb)
+  // launchMetaMaskUi({
+  //   activeTab,
+  //   container,
+  // }, cb)
 }
 
 /**
@@ -123,7 +126,50 @@ function initializeUi (activeTab, container, connectionStream, cb) {
  */
 function connectToAccountManager (connectionStream, cb) {
   const mx = setupMultiplex(connectionStream)
+
   setupControllerConnection(mx.createStream('controller'), cb)
-  setupWeb3Connection(mx.createStream('provider'))
+  //setupWeb3Connection(mx.createStream('provider'))
+  //cb(null)
+}
+
+
+/**
+ * Establishes a streamed connection to a Web3 provider
+ *
+ * @param {PortDuplexStream} connectionStream - PortStream instance establishing a background connection
+ */
+function setupWeb3Connection (connectionStream) {
+  const providerStream = new StreamProvider()
+  providerStream.pipe(connectionStream).pipe(providerStream)
+  connectionStream.on('error', console.error.bind(console))
+  providerStream.on('error', console.error.bind(console))
+  global.ethereumProvider = providerStream
+  global.ethQuery = new EthQuery(providerStream)
+  global.eth = new Eth(providerStream)
+}
+
+/**
+ * Establishes a streamed connection to the background account manager
+ *
+ * @param {PortDuplexStream} connectionStream - PortStream instance establishing a background connection
+ * @param {Function} cb - Called when the remote account manager connection is established
+ */
+function setupControllerConnection (connectionStream, cb) {
+
+  const eventEmitter = new EventEmitter()
+  const backgroundDnode = Dnode({
+    sendUpdate: function (state) {
+      eventEmitter.emit('update', state)
+    },
+  })
+
+  connectionStream.pipe(backgroundDnode).pipe(connectionStream)
+
+  cb(null, connectionStream)
+
+  // backgroundDnode.once('remote', function (backgroundConnection) {
+  //   backgroundConnection.on = eventEmitter.on.bind(eventEmitter)
+  //   cb(null, backgroundConnection)
+  // })
 }
 
